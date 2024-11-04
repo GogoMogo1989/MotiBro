@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Időnyilvántartó Rendszer</title>
+    <style src="style.css"></style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-blue-600 text-white p-4 text-center">
+        <h1 class="text-2xl font-semibold">Időnyilvántartó Rendszer</h1>
+    </header>
+
+    <section class="p-6">
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4 text-center">Új Bejegyzés</h2>
+            <form id="entry-form" class="space-y-4">
+                <div>
+                    <label for="date" class="block text-sm font-medium">Dátum</label>
+                    <input type="date" id="date" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div>
+                    <label for="start-time" class="block text-sm font-medium">Kezdési idő</label>
+                    <input type="time" id="start-time" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div>
+                    <label for="end-time" class="block text-sm font-medium">Befejezési idő</label>
+                    <input type="time" id="end-time" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium">Feladat leírása</label>
+                    <input type="text" id="description" placeholder="Írd be a feladat leírását" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <div>
+                    <label for="tag" class="block text-sm font-medium">Címke</label>
+                    <input type="text" id="tag" placeholder="Projekt/Ügyfél" class="w-full p-2 border border-gray-300 rounded">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Hozzáadás</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="p-6">
+        <div class="max-w-md mx-auto flex justify-center space-x-4">
+            <button onclick="filterEntries('daily')" class="bg-gray-300 p-2 rounded hover:bg-gray-400">Napi</button>
+            <button onclick="filterEntries('weekly')" class="bg-gray-300 p-2 rounded hover:bg-gray-400">Heti</button>
+            <button onclick="filterEntries('monthly')" class="bg-gray-300 p-2 rounded hover:bg-gray-400">Havi</button>
+            <button onclick="filterEntries('all')" class="bg-gray-300 p-2 rounded hover:bg-gray-400">Összes</button>
+        </div>
+    </section>
+
+    <section class="p-6">
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+            <table class="w-full text-left table-auto">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-700">
+                        <th class="px-4 py-2">Dátum</th>
+                        <th class="px-4 py-2">Kezdési idő</th>
+                        <th class="px-4 py-2">Befejezési idő</th>
+                        <th class="px-4 py-2">Leírás</th>
+                        <th class="px-4 py-2">Címke</th>
+                        <th class="px-4 py-2">Műveletek</th>
+                    </tr>
+                </thead>
+                <tbody id="entry-table-body">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
